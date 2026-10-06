@@ -141,8 +141,14 @@ export function GuaranteeStrip() {
   return (
     <section className="bg-gradient-to-r from-brand-dark via-brand to-brand-dark py-10">
       <div className="max-w-4xl mx-auto px-4 text-center text-white">
-        <div className="text-4xl">🛡️</div>
-        <h2 className="font-display text-2xl sm:text-3xl mt-2" style={{ fontWeight: 800 }}>
+        <Image
+          src="/guarantee-seal.png"
+          alt="100% Instant Delivery Guarantee — DigiHRK"
+          width={180}
+          height={180}
+          className="w-36 h-36 sm:w-44 sm:h-44 mx-auto rounded-full shadow-2xl shadow-black/30 bg-white"
+        />
+        <h2 className="font-display text-2xl sm:text-3xl mt-4" style={{ fontWeight: 800 }}>
           100% Instant Delivery Guarantee
         </h2>
         <p className="mt-2 text-white/90 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">

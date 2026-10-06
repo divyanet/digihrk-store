@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import SalesHeader from "@/components/SalesHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -141,6 +142,16 @@ export default function WorksheetsBundlePage() {
             </div>
             <div className="mt-6">
               <BuyButton product={p.key}>👉 YES! Give Me Instant Access</BuyButton>
+            </div>
+            <div className="mt-6">
+              <Image
+                src="/kid-coloring.png"
+                alt="Happy child enjoying DigiHRK printable worksheets"
+                width={640}
+                height={460}
+                className="rounded-3xl shadow-2xl shadow-black/40 w-full max-w-md"
+              />
+              <p className="text-mist/70 text-xs mt-2 max-w-md">Real learning, right at your home table.</p>
             </div>
           </div>
           <div className="flex flex-col items-center gap-8">
