@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* DigiHRK store palette — Crevvo-style sales navy + orange */
+  --color-navy: #141c33;
+  --color-navy-deep: #0c1226;
+  --color-navy-card: #1b2440;
+  --color-cream: #fff8f0;
+  --color-brand: #ff7a1a;
+  --color-brand-dark: #e0640a;
+  --color-brand-light: #ff9a4d;
+  --color-ink: #1a2340;
+  --color-muted: #5b6478;
+  --color-mist: #aeb8d4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: var(--color-ink);
+  background: #fff;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: #ffd9b8;
+  color: #7a2e00;
+}
+
+/* Orange gradient CTA */
+.btn-cta {
+  background: linear-gradient(180deg, #ff9a3c 0%, #ff7a1a 55%, #f96a05 100%);
+  box-shadow: 0 10px 24px -8px rgba(255, 122, 26, 0.65), inset 0 1px 0 rgba(255,255,255,.35);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.btn-cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 16px 30px -8px rgba(255, 122, 26, 0.7), inset 0 1px 0 rgba(255,255,255,.35);
+}
+.btn-cta:active { transform: translateY(0); }
+
+/* Black pill button (homepage cards) */
+.btn-pill {
+  background: #101828;
+  transition: transform .15s ease, background .15s ease;
+}
+.btn-pill:hover { background: #1d2939; transform: translateY(-2px); }
+
+/* Dark "how it works" card with offset orange border */
+.step-card {
+  position: relative;
+  background: var(--color-navy-card);
+  border: 1px solid rgba(255, 122, 26, 0.35);
+  border-radius: 1.25rem;
+}
+.step-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.25rem;
+  border: 2px solid var(--color-brand);
+  transform: translate(10px, 10px);
+  z-index: -1;
+  opacity: 0.55;
+}
+
+/* FAQ accordion */
+.faq-item .faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .25s ease;
+}
+.faq-item.open .faq-answer { grid-template-rows: 1fr; }
+.faq-item .faq-answer > div { overflow: hidden; }
+.faq-item .faq-chevron { transition: transform .25s ease; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+/* Sticky buy bar slide-up */
+#sticky-bar {
+  transform: translateY(110%);
+  transition: transform .3s ease;
+}
+#sticky-bar.visible { transform: translateY(0); }
+
+/* Soft float for hero mockups */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(-2deg); }
+}
+.animate-floaty { animation: floaty 6s ease-in-out infinite; }
+@keyframes floaty2 {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+.animate-floaty2 { animation: floaty2 7s ease-in-out infinite; }
+
+/* Checklist pop */
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(14px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.pop-in { animation: pop-in .5s ease both; }
