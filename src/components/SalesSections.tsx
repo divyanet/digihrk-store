@@ -193,3 +193,154 @@ export function HeroVisual({ product }: { product: Product }) {
     </div>
   );
 }
+
+/* ============================================================
+   Crevvo sales-page mirror sections
+   (same flow as crevvo.in/step/preschool-worksheet-bundle/,
+    with honest claims only — no fake counters or reviews)
+   ============================================================ */
+
+/* ---------- NOTE strip: soft-copy / instant email ---------- */
+export function NoteStrip({ text }: { text: string }) {
+  return (
+    <div className="bg-navy-deep border-y border-brand/30">
+      <p className="max-w-4xl mx-auto px-4 py-4 text-center text-sm sm:text-[15px] text-mist">
+        <span className="text-brand font-bold">NOTE:</span> {text}
+      </p>
+    </div>
+  );
+}
+
+/* ---------- "DO YOU KNOW?" — gentle, honest version ---------- */
+export function DoYouKnow({ title, intro, points }: { title: React.ReactNode; intro: string; points: string[] }) {
+  return (
+    <section className="bg-white py-16 sm:py-20">
+      <div className="max-w-4xl mx-auto px-4">
+        <h2 className="font-display text-3xl sm:text-4xl text-center text-ink" style={{ fontWeight: 800 }}>
+          {title}
+        </h2>
+        <p className="text-muted text-center mt-4 max-w-2xl mx-auto leading-relaxed">{intro}</p>
+        <div className="mt-8 bg-cream border border-orange-100 rounded-3xl p-6 sm:p-8">
+          <ul className="space-y-3.5">
+            {points.map((pt, i) => (
+              <li key={i} className="flex items-start gap-3 text-[15px] text-ink/90">
+                <span className="shrink-0 w-7 h-7 rounded-full bg-brand/15 text-brand-dark grid place-items-center font-bold text-sm">!</span>
+                <span>{pt}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- "What you need" — kid + 15 min + printer ---------- */
+export function WhatYouNeed({ title, items }: { title: string; items: { icon: string; h: string; p: string }[] }) {
+  return (
+    <section className="bg-cream py-16 sm:py-20">
+      <div className="max-w-5xl mx-auto px-4 text-center">
+        <h2 className="font-display text-3xl sm:text-4xl text-ink" style={{ fontWeight: 800 }}>{title}</h2>
+        <div className="mt-10 grid sm:grid-cols-3 gap-5">
+          {items.map((it) => (
+            <div key={it.h} className="bg-navy rounded-3xl p-8 border border-brand/25">
+              <div className="text-5xl">{it.icon}</div>
+              <h3 className="font-display font-bold text-white text-lg mt-4 tracking-wide">{it.h}</h3>
+              <p className="text-mist text-sm mt-2">{it.p}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- "Which will you choose?" A vs B + countdown ---------- */
+export function ChooseSection({ product, aTitle, aSub, bTitle, bSub }: {
+  product: Product;
+  aTitle: string; aSub: string; bTitle: string; bSub: string;
+}) {
+  return (
+    <section className="bg-white py-16 sm:py-20">
+      <div className="max-w-5xl mx-auto px-4 text-center">
+        <h2 className="font-display text-3xl sm:text-4xl text-ink" style={{ fontWeight: 800 }}>
+          Which Will <span className="text-brand">You Choose?</span>
+        </h2>
+        <div className="mt-10 grid sm:grid-cols-2 gap-6 text-left">
+          <div className="rounded-3xl border-2 border-slate-200 bg-slate-50 p-8 opacity-80">
+            <span className="inline-block bg-slate-400 text-white font-display font-bold text-lg w-12 h-12 rounded-2xl grid place-items-center" style={{ fontWeight: 800 }}>A</span>
+            <h3 className="font-display font-bold text-xl text-ink mt-4">{aTitle}</h3>
+            <p className="text-muted text-sm mt-2 leading-relaxed">{aSub}</p>
+          </div>
+          <div className="rounded-3xl border-2 border-brand bg-gradient-to-b from-orange-50 to-white p-8 shadow-xl shadow-orange-500/10 relative">
+            <span className="absolute -top-3 right-6 bg-brand text-white text-[11px] font-bold px-3 py-1 rounded-full tracking-widest">SMART CHOICE</span>
+            <span className="inline-block bg-gradient-to-br from-brand-light to-brand-dark text-white font-display font-bold text-lg w-12 h-12 rounded-2xl grid place-items-center" style={{ fontWeight: 800 }}>B</span>
+            <h3 className="font-display font-bold text-xl text-ink mt-4">{bTitle}</h3>
+            <p className="text-muted text-sm mt-2 leading-relaxed">{bSub}</p>
+          </div>
+        </div>
+        <div className="mt-10 flex flex-col items-center gap-5">
+          <p className="text-sm font-bold text-muted tracking-widest uppercase">Offer ends in</p>
+          <Countdown />
+          <BuyButton product={product.key}>
+            👉 I Choose {product.key === "coloring" ? "Creativity" : "Smart Learning"} — Give Me Access
+          </BuyButton>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- "Here are the samples" ---------- */
+export function SamplesStrip({ title, sub, images }: { title: string; sub: string; images: { src: string; alt: string }[] }) {
+  return (
+    <section className="bg-cream py-16 sm:py-20">
+      <div className="max-w-5xl mx-auto px-4 text-center">
+        <h2 className="font-display text-3xl sm:text-4xl text-ink" style={{ fontWeight: 800 }}>{title}</h2>
+        <p className="text-muted mt-3 max-w-xl mx-auto">{sub}</p>
+        <div className="mt-10 flex flex-wrap justify-center gap-6">
+          {images.map((im) => (
+            <Image
+              key={im.src}
+              src={im.src}
+              alt={im.alt}
+              width={380}
+              height={380}
+              className="rounded-3xl shadow-xl shadow-slate-900/10 w-64 sm:w-80 bg-white"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Package contents ("Unlock ... today") ---------- */
+export function PackageContents({ title, items, product }: { title: string; items: string[]; product: Product }) {
+  return (
+    <section className="bg-navy py-16 sm:py-20">
+      <div className="max-w-3xl mx-auto px-4">
+        <h2 className="font-display text-3xl sm:text-4xl text-center text-white" style={{ fontWeight: 800 }}>{title}</h2>
+        <div className="mt-8 bg-navy-card border border-brand/30 rounded-3xl p-6 sm:p-8">
+          <ul className="space-y-3">
+            {items.map((it, i) => (
+              <li key={i} className="flex items-start gap-3 text-white/90 text-[15px]">
+                <span className="text-brand font-bold mt-0.5">✓</span>
+                <span dangerouslySetInnerHTML={{ __html: it }} />
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <p className="text-mist text-sm">Regular Price: <span className="line-through">{inr(product.mrp)}</span></p>
+              <p className="text-white font-display text-2xl mt-1" style={{ fontWeight: 800 }}>
+                Buy Today At Just <span className="text-brand">{inr(product.price)}/-</span>
+              </p>
+            </div>
+            <BuyButton product={product.key} className="shrink-0">Get It Now →</BuyButton>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

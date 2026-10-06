@@ -14,8 +14,14 @@ import {
   GuaranteeStrip,
   FinalCta,
   HeroVisual,
+  NoteStrip,
+  DoYouKnow,
+  WhatYouNeed,
+  ChooseSection,
+  SamplesStrip,
+  PackageContents,
 } from "@/components/SalesSections";
-import { products, discountPct } from "@/lib/site";
+import { products, inr } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "10,000,000+ Coloring Pages Bundle — 100,000+ Coloring Books (PDF + SVG + AI)",
@@ -25,46 +31,38 @@ export const metadata: Metadata = {
 
 const p = products.coloring;
 
-const checklist = [
-  {
-    h: "10,000,000+ Coloring Pages — An Endless Supply of Creativity",
-    p: "Animals, festivals, cartoons, mandalas, educational themes and thousands more. Your child will never run out of pages to color — and neither will you.",
-  },
-  {
-    h: "100,000+ Complete Coloring Books",
-    p: "Fully organized coloring books you can print as-is. Perfect for gifting, classrooms, activity centers, or quiet evenings at home.",
-  },
-  {
-    h: "3 Print-Ready Formats: PDF + SVG + AI",
-    p: "Crisp PDFs for home printing, SVGs for Cricut & cutting machines, AI files for designers. Whatever your printer or project — you're covered.",
-  },
-  {
-    h: "For Kids AND Adults",
-    p: "Simple bold designs for little hands, plus intricate mandalas and detailed art for grown-ups. One bundle the whole family actually uses.",
-  },
-  {
-    h: "MRR + PLR Rights Included",
-    p: "Master Resell Rights and Private Label Rights come with the bundle — rebrand it, bundle it, even resell it and keep every rupee.",
-  },
-  {
-    h: "Instant Download + Lifetime Access",
-    p: "Pay once on secure Razorpay checkout. Download links hit your email within minutes — print anytime, forever.",
-  },
+const heroBullets = [
+  "10,000,000+ coloring pages across every theme kids love",
+  "100,000+ ready-to-print coloring books",
+  "3 formats: PDF + SVG + AI — print, cut & design",
+  "Made for kids AND adults",
+  "MRR + PLR rights included — resell & keep 100% profit",
+  "Instant download + lifetime access",
 ];
 
-const inside = [
-  { icon: "🎨", h: "Coloring Pages 1", p: "The core mega-collection — thousands of hand-picked coloring pages across every theme kids love." },
-  { icon: "📚", h: "Kids Education 1", p: "Learning-through-coloring: alphabets, numbers, shapes and first words in fun printable form." },
-  { icon: "✏️", h: "Kids Education 2", p: "More educational coloring sets that build vocabulary, recognition and early concepts while kids play." },
-  { icon: "🧩", h: "Kids Worksheets Bundle", p: "Activity worksheets mixed into the bundle — puzzles, tracing and practice sheets for extra fun." },
-  { icon: "📖", h: "Busy Book", p: "The beloved quiet-time busy book — interactive printable activities that keep little hands busy anywhere." },
-  { icon: "💎", h: "Bonus: Organized Books", p: "100,000+ ready-to-print coloring books, neatly organized so you find the perfect page in seconds." },
+const giveBlocks = [
+  {
+    h: "Endless Hours of Creative Fun",
+    p: "With 10 million+ pages, the fun never runs out. Rainy day, long drive, quiet evening — there's always a fresh page waiting. No more 'I'm bored' on repeat.",
+  },
+  {
+    h: "Skills That Grow While They Play",
+    p: "Coloring builds focus, patience and hand control — the exact fine-motor skills writing needs. Kids think they're just having fun; you're building foundations.",
+  },
+  {
+    h: "One Bundle for the Whole Family",
+    p: "Simple bold designs for little hands, plus intricate mandalas and detailed art for grown-ups. This isn't a kids-only pack gathering dust — everyone uses it.",
+  },
+  {
+    h: "A Business in a Box",
+    p: "MRR + PLR rights come included. Rebrand the bundle, sell it as your own product, and keep every rupee. The bundle can pay for itself many times over.",
+  },
 ];
 
 const faqs = [
   {
     q: "Is this a physical product or a digital download?",
-    a: "It's 100% digital. After payment, you get download links on your email within minutes. Nothing is shipped — you print the pages at home or at any print shop, as many times as you like.",
+    a: "It's 100% digital. After payment, download links arrive on your email within minutes. Nothing is shipped — you print the pages at home or at any print shop, as many times as you like.",
   },
   {
     q: "What file formats are included?",
@@ -98,10 +96,19 @@ const steps = [
   { n: "3", h: "Download & print", p: "Links land in your inbox instantly. Print at home and start coloring today." },
 ];
 
+const packageItems = [
+  "<strong>10,000,000+ coloring pages</strong> — animals, festivals, cartoons, mandalas, educational themes & more",
+  "<strong>100,000+ complete coloring books</strong> — organized, print-as-is books",
+  "<strong>PDF + SVG + AI formats</strong> — for home printers, cutting machines & designers",
+  "<strong>5 organized Drive folders</strong> — Coloring Pages 1, Kids Education 1 & 2, Worksheets Bundle, Busy Book",
+  "<strong>MRR + PLR rights included</strong> — rebrand & resell, keep 100% profit",
+  "<strong>Instant email delivery + lifetime access</strong> — print forever",
+];
+
 export default function ColoringBundlePage() {
   return (
     <>
-      <AnnouncementBar text={`LIMITED TIME OFFER — ${discountPct(p)}% OFF ends tonight`} />
+      <AnnouncementBar text={`Offer Valid Only For Today — ${inr(p.mrp)}/- ${inr(p.price)}/- Only`} />
       <SalesHeader product={p.key} />
 
       {/* HERO */}
@@ -109,29 +116,26 @@ export default function ColoringBundlePage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,122,26,0.12),transparent_60%)]" aria-hidden />
         <div className="relative max-w-6xl mx-auto px-4 py-14 sm:py-20 grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="inline-block bg-brand/15 border border-brand/40 text-brand text-xs font-bold px-4 py-1.5 rounded-full tracking-widest">
-              🎨 10 MILLION+ PAGES MEGA BUNDLE
-            </span>
-            <h1 className="font-display text-4xl sm:text-5xl text-white leading-[1.1] mt-5" style={{ fontWeight: 900 }}>
-              Turn Boring Screen Time Into <span className="text-brand">Hours of Creative Fun</span>
+            <h1 className="font-display text-4xl sm:text-5xl text-white leading-[1.1]" style={{ fontWeight: 900 }}>
+              Turn Boring Screen Time Into <span className="text-brand">Hours of Creative Fun</span> with 10,000,000+ Coloring Pages!
             </h1>
             <p className="text-mist text-lg mt-4 leading-relaxed">
-              10,000,000+ coloring pages and 100,000+ coloring books in PDF, SVG &amp; AI —
+              10,000,000+ coloring pages &amp; 100,000+ coloring books in PDF, SVG &amp; AI —
               for kids <em>and</em> adults. Print at home, color anywhere, keep forever.
             </p>
             <ul className="mt-6 space-y-2.5 text-[15px]">
-              {[
-                "10,000,000+ coloring pages across every theme",
-                "100,000+ ready-to-print coloring books",
-                "PDF + SVG + AI formats — print, cut & design",
-                "MRR + PLR rights included",
-              ].map((t) => (
+              {heroBullets.map((t) => (
                 <li key={t} className="flex items-start gap-3 text-white/90">
                   <span className="text-brand font-bold mt-0.5">✓</span> {t}
                 </li>
               ))}
             </ul>
-            <div className="mt-8">
+            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs text-mist/80 font-medium">
+              <span>📥 Digital download</span>
+              <span>📁 5 organized folders</span>
+              <span>⚡ Instant email delivery</span>
+            </div>
+            <div className="mt-6">
               <BuyButton product={p.key}>👉 YES! Give Me Instant Access</BuyButton>
             </div>
           </div>
@@ -149,40 +153,102 @@ export default function ColoringBundlePage() {
         </div>
       </section>
 
-      <Checklist title="Here's Everything You Get" items={checklist} />
-
-      <InsideBundle
-        title="Inside the Bundle: 5 Power-Packed Folders"
-        sub="Every folder opens instantly from your email — save it to your own Drive, print what you love, skip what you don't."
-        cards={inside}
+      {/* WHAT YOU GIVE YOUR CHILD */}
+      <Checklist
+        title="Here Is What You Are Going to Give Your Child"
+        items={giveBlocks}
       />
 
-      {/* PAIN / AGITATION — honest, gentle */}
-      <section className="bg-cream py-16 sm:py-20">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="font-display text-3xl sm:text-4xl text-ink" style={{ fontWeight: 800 }}>
-            Do You Know Where Your Child's <span className="text-brand">Hours Go Every Day?</span>
+      {/* DO YOU KNOW */}
+      <DoYouKnow
+        title={<>Do You Know Where Your Child's <span className="text-brand">Hours Go Every Day?</span></>}
+        intro="Hours of cartoons and games keep kids quiet — but they don't build anything. Here's what too much passive screen time quietly replaces:"
+        points={[
+          "Creative play time — the hours kids once spent drawing, building and imagining.",
+          "Attention span — fast-paced content trains kids to need constant stimulation.",
+          "Family time — everyone on their own screen, in the same room, barely talking.",
+          "Restful evenings — late-night scrolling pushes bedtimes later and mornings harder.",
+        ]}
+      />
+
+      <NoteStrip text="All files are in soft-copy (digital) format. You will receive download links instantly via email right after payment — print at home anytime." />
+
+      {/* INSIDE THE BUNDLE */}
+      <InsideBundle
+        title="Inside This Bundle You Will Discover"
+        sub="Five power-packed folders, organized and ready — plus thousands of bonus books."
+        cards={[
+          { icon: "🎨", h: "Coloring Pages 1", p: "The core mega-collection — thousands of hand-picked coloring pages across every theme kids love." },
+          { icon: "📚", h: "Kids Education 1", p: "Learning-through-coloring: alphabets, numbers, shapes and first words in fun printable form." },
+          { icon: "✏️", h: "Kids Education 2", p: "More educational coloring sets that build vocabulary, recognition and early concepts while kids play." },
+          { icon: "🧩", h: "Kids Worksheets Bundle", p: "Activity worksheets mixed into the bundle — puzzles, tracing and practice sheets for extra fun." },
+          { icon: "📖", h: "Busy Book", p: "The beloved quiet-time busy book — interactive printable activities that keep little hands busy anywhere." },
+          { icon: "💎", h: "100,000+ Coloring Books", p: "Fully organized, ready-to-print coloring books — find the perfect page in seconds." },
+        ]}
+      />
+      <div className="bg-navy pb-14 -mt-6">
+        <p className="text-center text-brand font-display text-xl" style={{ fontWeight: 700 }}>
+          And Many More!… Discover the joy of endless coloring! 🎉
+        </p>
+      </div>
+
+      {/* SAMPLES */}
+      <SamplesStrip
+        title="Here Are The Samples"
+        sub="A peek at the bundle cover and the worksheets box — the real files match this quality throughout."
+        images={[
+          { src: p.image, alt: p.imageAlt },
+          { src: products.worksheets.image, alt: products.worksheets.imageAlt },
+        ]}
+      />
+
+      {/* PACKAGE CONTENTS */}
+      <PackageContents
+        title="Unlock a Lifetime of Creativity Today!"
+        items={packageItems}
+        product={p}
+      />
+
+      {/* WHAT YOU NEED */}
+      <WhatYouNeed
+        title="What You Need for This Mega Bundle"
+        items={[
+          { icon: "🧒", h: "A CURIOUS KID", p: "(or a grown-up who loves to color!)" },
+          { icon: "⏰", h: "15 MINUTES A DAY", p: "That's all it takes to build a creative habit." },
+          { icon: "🖨️", h: "AND A PRINTER", p: "Any home printer works — color or black & white." },
+        ]}
+      />
+
+      {/* WHY RECOMMEND */}
+      <section className="bg-navy-deep py-16 sm:py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="font-display text-3xl sm:text-4xl text-center text-white" style={{ fontWeight: 800 }}>
+            Why Families Recommend <span className="text-brand">DigiHRK</span>
           </h2>
-          <p className="text-muted mt-4 leading-relaxed max-w-2xl mx-auto">
-            Endless cartoons and games keep kids quiet — but they don't build anything.
-            Coloring is different: it trains focus, patience, hand control and creativity,
-            all while kids think they're just having fun. Give them pages, not just pixels.
-          </p>
-          <div className="mt-8 grid sm:grid-cols-3 gap-4 text-left">
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
             {[
-              ["🎯", "Builds Focus", "Finishing a page teaches kids to concentrate on one task till it's done."],
-              ["✋", "Stronger Hands", "Coloring inside the lines develops the fine motor control writing needs."],
-              ["🌈", "Real Creativity", "Choosing colors and patterns grows imagination — no algorithm required."],
+              ["⚡", "Instant Download", "Download links hit your email within minutes of payment. Plus lifetime access — print forever."],
+              ["💎", "Premium Quality", "High-resolution, print-ready files in PDF, SVG & AI. Crisp prints every single time."],
+              ["🎧", "Live Support", "Stuck anywhere? Email us anytime — real humans reply fast and sort it out."],
             ].map(([icon, h, t]) => (
-              <div key={h} className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
-                <div className="text-3xl">{icon}</div>
-                <h3 className="font-display font-bold text-ink mt-2">{h}</h3>
-                <p className="text-muted text-sm mt-1">{t}</p>
+              <div key={h} className="bg-navy-card border border-white/10 rounded-3xl p-7 text-center">
+                <div className="text-4xl">{icon}</div>
+                <h3 className="font-display font-bold text-white text-lg mt-3">{h}</h3>
+                <p className="text-mist text-sm mt-2 leading-relaxed">{t}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* CHOOSE */}
+      <ChooseSection
+        product={p}
+        aTitle={`Keep Your ${inr(p.price)} & Spend It Anywhere`}
+        aSub="One pizza. Two movie tickets. Gone by tomorrow — and your child's screen time stays exactly the same."
+        bTitle={`Invest ${inr(p.price)} in Unlimited Creativity`}
+        bSub="10 million+ pages, 100,000+ books, MRR+PLR rights, lifetime access. One payment — years of creative fun for the whole family."
+      />
 
       <HowItWorks steps={steps} />
 
